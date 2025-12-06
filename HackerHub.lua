@@ -17,6 +17,29 @@ Window:AddMinimizeButton({
     Corner = { CornerRadius = UDim.new(35, 1) },
 })
 
+task.spawn(function()
+    local vu30 = {
+        "RolePlayName",
+        "Hacker Hub"
+    }
+    local vu31 = game:GetService("ReplicatedStorage"):WaitForChild("RE")
+    pcall(function()
+        vu31:WaitForChild("1RPNam1eTex1t"):FireServer(unpack(vu30))
+        vu31:WaitForChild("1RPNam1eColo1r"):FireServer("PickingRPNameColor", Color3.new(0, 0, 0))
+    end)
+end)
+task.spawn(function()
+    local vu32 = {
+        "RolePlayBio",
+        "Versão 0.1"
+    }
+    local vu33 = game:GetService("ReplicatedStorage"):WaitForChild("RE")
+    pcall(function()
+        vu33:WaitForChild("1RPNam1eTex1t"):FireServer(unpack(vu32))
+        vu33:WaitForChild("1RPNam1eColo1r"):FireServer("PickingRPBioColor", Color3.new(0, 0, 0))
+    end)
+end)
+
 local Tab1 = Window:MakeTab({"Creditos", "info"})
 
 Tab1:AddDiscordInvite({
