@@ -115,7 +115,7 @@ end
 Tab2:AddTextBox({
     Name = "Nome do Jogador",
     Description = "Digite parte do nome",
-    PlaceholderText = "ex: lo → Lolyta",
+    PlaceholderText = "Theus999",
     Callback = function(Value)
         local foundPlayer = findPlayerByPartialName(Value)
         if foundPlayer then
@@ -129,7 +129,7 @@ Tab2:AddTextBox({
 
 -- Botão para ativar/desativar headsit
 -- Botão para ativar/desativar headsit (versão simplificada)
-Tab2:AddButton({"", function()
+Tab2:AddButton({"Ativar/Desativar Headsit", function()
     if not selectedPlayerName then
     
         return
@@ -206,7 +206,7 @@ Tab2:AddSlider({
  end)
 
  Tab2:AddButton({
-    Name = "Reset Speed/Gravity/Jumppower.✅",
+    Name = "Reset Speed/Gravity/Jumppower",
     Callback = function()
         -- Resetar Speed
         local player = game.Players.LocalPlayer
@@ -436,22 +436,6 @@ local connections = {}
 local espEnabled = false
 local selectedColor = "RGB Suave"
 
--- Botão para Fly GUI
-Tab2:AddButton({
-    Name = "Ativar Fly GUI",
-    Description = "Carrega um GUI de fly universal",
-    Callback = function()
-        local success, _ = pcall(function()
-            loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Fly-gui-v3-30439"))()
-        end)
-
-        game.StarterGui:SetCore("SendNotification", {
-            Title = success and "Sucesso" or "Erro",
-            Text = success and "Fly GUI carregado!" or "Falha ao carregar o Fly GUI.",
-            Duration = 5
-        })
-    end
-})
 
 local Section = Tab2:AddSection({"ESP"})
 
@@ -824,7 +808,7 @@ Tab4:AddButton({
 
 local Tab5 = Window:MakeTab({"Car", "Car"})
 
-local Section = Tab5:AddSection({"all car functions"})
+local Section = Tab5:AddSection({"Todas as funções do carro"})
 
 
 local Players = game:GetService("Players")
@@ -962,7 +946,7 @@ end
 
 -- Parágrafo
 Tab5:AddParagraph({
-    Title = "use o void protection",
+    Title = "Use o void protection",
     Content = ""
 })
 
@@ -1026,7 +1010,7 @@ Tab5:AddToggle({
     end
 })
 
-local Section = Tab5:AddSection({"functions dos carro"})
+local Section = Tab5:AddSection({"Função dos carro"})
 
 -- Criar o dropdown
 local Dropdown = Tab5:AddDropdown({
@@ -1284,7 +1268,7 @@ local Tab6 = Window:MakeTab({"RGB", "brush"})
                                                    -- === Tab 6: RGB === --
 ---------------------------------------------------------------------------------------------------------------------------------
 
-local Section = Tab6:AddSection({""})
+local Section = Tab6:AddSection({"RGB para usar em você"})
 
 
 
@@ -1319,8 +1303,6 @@ local function fireServer(eventName, args)
         end)
     end
 end
-
-local Section = Tab6:AddSection({"RGB para usar em você"})
 
 -- Nome + Bio RGB  juntos
 local nameBioRGBActive = false
@@ -1997,7 +1979,7 @@ Tab9:AddButton({
     end
 })
 
-local Section = Tab9:AddSection({" flings"})
+local Section = Tab9:AddSection({"Flings"})
 
 local DropdownFlingMethod = Tab9:AddDropdown({
     Name = "Selecionar Método de Fling",
@@ -3340,7 +3322,7 @@ WindUI:AddTheme({
 
 local Window = WindUI:CreateWindow({
     Title = "Hacker Hub Admin",
-    Icon = "rbxassetid://78467548362841", -- lucide icon
+    Icon = "door-open", -- lucide icon
     Author = "by Theus999",
     Folder = "Hacker Hub Admin",
     
@@ -3359,6 +3341,6 @@ local Window = WindUI:CreateWindow({
 
 local Tab = Window:Tab({
     Title = "Comandos",
-    Icon = "rbxassetid://78467548362841", -- optional
+    Icon = "bird", -- optional
     Locked = false,
 })
