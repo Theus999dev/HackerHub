@@ -3366,6 +3366,20 @@ local Window = WindUI:CreateWindow({
     ScrollBarEnabled = false,
 })
 
+Window:EditOpenButton({
+    Title = "Open Example UI",
+    Icon = "monitor",
+    CornerRadius = UDim.new(0,16),
+    StrokeThickness = 2,
+    Color = ColorSequence.new( -- gradient
+        Color3.fromHex("FF0F7B"), 
+        Color3.fromHex("F89B29")
+    ),
+    OnlyMobile = false,
+    Enabled = true,
+    Draggable = true,
+})
+
 local Tab = Window:Tab({
     Title = "Comandos",
     Icon = "rbxassetid://78467548362841", -- optional
