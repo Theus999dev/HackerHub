@@ -3374,7 +3374,7 @@ local Tab = Window:Tab({
 
 local Dropdown = Tab:Dropdown({
     Title = "Player List",
-    Desc = "Player List",
+    Desc = "Player list",
     Values = { "Category A", "Category B", "Category C" },
     Value = "Category A",
     Callback = function(option) 
