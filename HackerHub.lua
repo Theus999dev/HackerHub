@@ -3373,7 +3373,7 @@ local Tab = Window:Tab({
 })
 
 local Dropdown = Tab:Dropdown({
-    Title = "Player List",
+    Title = "Player list",
     Desc = "Player list",
     Values = { "Category A", "Category B", "Category C" },
     Value = "Category A",
@@ -3384,7 +3384,7 @@ local Dropdown = Tab:Dropdown({
 
 local Button = Tab:Button({
     Title = "Verifique",
-    Desc = "Verificar jogadores que estiverem usando o Hub",
+    Desc = "Verifica jogadores que estiver usando o hub",
     Locked = false,
     Callback = function()
         -- ...
@@ -3393,7 +3393,7 @@ local Button = Tab:Button({
 
 local Button = Tab:Button({
     Title = "Kick",
-    Desc = "Expulsar Jogador",
+    Desc = "Expulsar jogador",
     Locked = false,
     Callback = function()
         -- ...
