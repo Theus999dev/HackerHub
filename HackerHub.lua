@@ -11,7 +11,7 @@ Window:AddMinimizeButton({
     Corner = { CornerRadius = UDim.new(35, 1) },
 })
 
-local Tab1 = Window:MakeTab({"Credits", "info"})
+local Tab1 = Window:MakeTab({"Creditos", "info"})
 
 Tab1:AddDiscordInvite({
     Name = "Hacker Hub",
