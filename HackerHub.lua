@@ -1,7 +1,7 @@
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/Library-ui/refs/heads/main/Redzhubui"))()
 
 local Window = redzlib:MakeWindow({
-  Title = "HackerHub | Brookhaven RP",
+  Title = "Hacker Hub | Brookhaven RP",
   SubTitle = "by Theus999",
   SaveFolder = "HackerHub"
 })
@@ -14,7 +14,7 @@ Window:AddMinimizeButton({
 local Tab1 = Window:MakeTab({"Credits", "info"})
 
 Tab1:AddDiscordInvite({
-    Name = "HackerHub",
+    Name = "Hacker Hub",
     Description = "Join server",
     Logo = "",
     Invite = "Link discord invite",
@@ -115,7 +115,7 @@ end
 Tab2:AddTextBox({
     Name = "Nome do Jogador",
     Description = "Digite parte do nome",
-    PlaceholderText = "Theus999",
+    PlaceholderText = "ex: lo → Lolyta",
     Callback = function(Value)
         local foundPlayer = findPlayerByPartialName(Value)
         if foundPlayer then
@@ -129,7 +129,7 @@ Tab2:AddTextBox({
 
 -- Botão para ativar/desativar headsit
 -- Botão para ativar/desativar headsit (versão simplificada)
-Tab2:AddButton({"Ativar/Desativar Headsit", function()
+Tab2:AddButton({"", function()
     if not selectedPlayerName then
     
         return
@@ -206,7 +206,7 @@ Tab2:AddSlider({
  end)
 
  Tab2:AddButton({
-    Name = "Reset Speed/Gravity/Jumppower",
+    Name = "Reset Speed/Gravity/Jumppower.✅",
     Callback = function()
         -- Resetar Speed
         local player = game.Players.LocalPlayer
@@ -436,6 +436,22 @@ local connections = {}
 local espEnabled = false
 local selectedColor = "RGB Suave"
 
+-- Botão para Fly GUI
+Tab2:AddButton({
+    Name = "Ativar Fly GUI",
+    Description = "Carrega um GUI de fly universal",
+    Callback = function()
+        local success, _ = pcall(function()
+            loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Fly-gui-v3-30439"))()
+        end)
+
+        game.StarterGui:SetCore("SendNotification", {
+            Title = success and "Sucesso" or "Erro",
+            Text = success and "Fly GUI carregado!" or "Falha ao carregar o Fly GUI.",
+            Duration = 5
+        })
+    end
+})
 
 local Section = Tab2:AddSection({"ESP"})
 
@@ -579,6 +595,10 @@ Toggle1:Callback(function(value)
 end)
 
 local Tab3 = Window:MakeTab({"Avatar", "shirt"})
+
+----------------------------------------------------------------------------------------------------------------------------------
+                                                         -- Tab3:  Avatar Editor--
+----------------------------------------------------------------------------------------------------------------------------------
 
 local Section = Tab3:AddSection({"Copy Avatar"})
 
@@ -740,6 +760,10 @@ Tab3:AddButton({
 })
 
 local Tab4 = Window:MakeTab({"House", "Home"})
+
+---------------------------------------------------------------------------------------------------------------------------------
+                                          -- === Tab4: House === --
+---------------------------------------------------------------------------------------------------------------------------------
 
 -- Botão para remover ban de todas as casas
 Tab4:AddButton({
@@ -1256,6 +1280,10 @@ end)
 
 local Tab6 = Window:MakeTab({"RGB", "brush"})
 
+---------------------------------------------------------------------------------------------------------------------------------
+                                                   -- === Tab 6: RGB === --
+---------------------------------------------------------------------------------------------------------------------------------
+
 local Section = Tab6:AddSection({""})
 
 
@@ -1314,191 +1342,11 @@ Tab6:AddToggle({
     end
 })
 
-local Tab7 = Window:MakeTab({"Music All", "radio"})
-
-local loopAtivo = false
-local InputID = ""
-
-Tab7:AddTextBox({
-    Name = "Insira o ID Audio All",
-    Description = "Digite o ID do som que deseja tocar",
-    Default = "",
-    PlaceholderText = "Theus999",
-    ClearTextOnFocus = true,
-    Callback = function(text)
-        InputID = tonumber(text)
-    end
-})
-
-local function fireServer(eventName, args)
-    local ReplicatedStorage = game:GetService("ReplicatedStorage")
-    local event = ReplicatedStorage:FindFirstChild("RE") and ReplicatedStorage.RE:FindFirstChild(eventName)
-    if event then
-        pcall(function()
-            event:FireServer(unpack(args))
-        end)
-    end
-end
-
-Tab7:AddButton({
-    Name = "Tocar Som",
-    Description = "Clique para tocar a música inserida",
-    Callback = function()
-        if InputID then
-            fireServer("1Gu1nSound1s", {Workspace, InputID, 1})
-            local globalSound = Instance.new("Sound", Workspace)
-            globalSound.SoundId = "rbxassetid://" .. InputID
-            globalSound.Looped = false
-            globalSound:Play()
-            task.wait(3)
-            globalSound:Destroy()
-        end
-    end
-})
-
-Tab7:AddToggle({
-    Name = "Loop",
-    Description = "Ative para colocar o som em loop",
-    Default = false,
-    Callback = function(state)
-        loopAtivo = state
-        if loopAtivo then
-            spawn(function()
-                while loopAtivo do
-                    if InputID then
-                        fireServer("1Gu1nSound1s", {Workspace, InputID, 1})
-                        local globalSound = Instance.new("Sound", Workspace)
-                        globalSound.SoundId = "rbxassetid://" .. InputID
-                        globalSound.Looped = false
-                        globalSound:Play()
-                        task.spawn(function()
-                            task.wait(3)
-                            globalSound:Destroy()
-                        end)
-                    end
-                    task.wait(1)
-                end
-            end)
-        end
-    end
-})
-
--- Dropdowns para Tab6
-local function createSoundDropdown(title, musicOptions, defaultOption)
-    local musicNames = {}
-    local categoryMap = {}
-    for category, sounds in pairs(musicOptions) do
-        for _, music in ipairs(sounds) do
-            if music.name ~= "" and music.id ~= "4354908569" then
-                table.insert(musicNames, music.name)
-                categoryMap[music.name] = {id = music.id, category = category}
-            end
-        end
-    end
-
-    local selectedSoundID = nil
-    local currentVolume = 1
-    local currentPitch = 1
-
-    local function playSound(soundId, volume, pitch)
-        fireServer("1Gu1nSound1s", {Workspace, soundId, volume})
-        local globalSound = Instance.new("Sound")
-        globalSound.Parent = Workspace
-        globalSound.SoundId = "rbxassetid://" .. soundId
-        globalSound.Volume = volume
-        globalSound.Pitch = pitch
-        globalSound.Looped = false
-        globalSound:Play()
-        task.spawn(function()
-            task.wait(3)
-            globalSound:Destroy()
-        end)
-    end
-
-    Tab7:AddDropdown({
-        Name = title,
-        Description = "Escolha um som para tocar no servidor",
-        Default = defaultOption,
-        Multi = false,
-        Options = musicNames,
-        Callback = function(selectedSound)
-            if selectedSound and categoryMap[selectedSound] then
-                selectedSoundID = categoryMap[selectedSound].id
-            else
-                selectedSoundID = nil
-            end
-        end
-    })
-
-    Tab7:AddButton({
-        Name = "Tocar Som Selecionado",
-        Description = "Clique para tocar o som do dropdown",
-        Callback = function()
-            if selectedSoundID then
-                playSound(selectedSoundID, currentVolume, currentPitch)
-            end
-        end
-    })
-
-    local dropdownLoopActive = false
-    Tab7:AddToggle({
-        Name = "Loop",
-        Description = "Ativa o loop do som selecionado",
-        Default = false,
-        Callback = function(state)
-            dropdownLoopActive = state
-            if state then
-                task.spawn(function()
-                    while dropdownLoopActive do
-                        if selectedSoundID then
-                            playSound(selectedSoundID, currentVolume, currentPitch)
-                        end
-                        task.wait(1)
-                    end
-                end)
-            end
-        end
-    })
-end
-
--- Dropdown "Memes"
-createSoundDropdown("Selecione um meme", {
-    ["Memes"] = {
-        {name = "", id = ""},
-
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        {name = "", id = ""},
-        
-        {name = "", id = ""},
-    }
-}, "")
-
 local Tab9 = Window:MakeTab({"Troll", "skull"})
 
+---------------------------------------------------------------------------------------------------------------------------------
+                                                   -- === Tab 9: troll === --
+-----------------------------------------------------------------------------------------------------------------------------------
 local Players = game:GetService("Players")
 
 local Workspace = game:GetService("Workspace")
@@ -3474,43 +3322,3 @@ Tab9:AddButton({"Parar Tudo", function()
     originalProperties = nil
     showNotification("Tudo Parado", "Todas as funções foram desativadas.", nil)
 end})
-
-
-local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
-
-WindUI:AddTheme({
-    Name = "Dark", -- theme name
-    
-    Accent = Color3.fromHex("#18181b"),
-    Background = Color3.fromHex("#101010"), -- Accent
-    Outline = Color3.fromHex("#FFFFFF"),
-    Text = Color3.fromHex("#FFFFFF"),
-    Placeholder = Color3.fromHex("#7a7a7a"),
-    Button = Color3.fromHex("#52525b"),
-    Icon = Color3.fromHex("#a1a1aa"),
-})
-
-local Window = WindUI:CreateWindow({
-    Title = "Hacker Hub Admin",
-    Icon = "door-open", -- lucide icon
-    Author = "by Theus999",
-    Folder = "Hacker Hub Admin",
-    
-    -- ↓ This all is Optional. You can remove it.
-    Size = UDim2.fromOffset(580, 460),
-    MinSize = Vector2.new(560, 350),
-    MaxSize = Vector2.new(850, 560),
-    Transparent = true,
-    Theme = "Dark",
-    Resizable = true,
-    SideBarWidth = 300,
-    BackgroundImageTransparency = 0.42,
-    HideSearchBar = true,
-    ScrollBarEnabled = false,
-})
-
-local Tab = Window:Tab({
-    Title = "Comandos",
-    Icon = "rbxassetid://78467548362841", -- optional
-    Locked = false,
-})
