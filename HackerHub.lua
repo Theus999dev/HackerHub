@@ -115,7 +115,7 @@ end
 Tab2:AddTextBox({
     Name = "Nome do Jogador",
     Description = "Digite parte do nome",
-    PlaceholderText = "ex: lo → Lolyta",
+    PlaceholderText = "Theus999",
     Callback = function(Value)
         local foundPlayer = findPlayerByPartialName(Value)
         if foundPlayer then
@@ -129,7 +129,7 @@ Tab2:AddTextBox({
 
 -- Botão para ativar/desativar headsit
 -- Botão para ativar/desativar headsit (versão simplificada)
-Tab2:AddButton({"", function()
+Tab2:AddButton({"Ativar/Desativar Headsit", function()
     if not selectedPlayerName then
     
         return
@@ -206,7 +206,7 @@ Tab2:AddSlider({
  end)
 
  Tab2:AddButton({
-    Name = "Reset Speed/Gravity/Jumppower.✅",
+    Name = "Reset Speed/Gravity/Jumppower",
     Callback = function()
         -- Resetar Speed
         local player = game.Players.LocalPlayer
@@ -436,22 +436,6 @@ local connections = {}
 local espEnabled = false
 local selectedColor = "RGB Suave"
 
--- Botão para Fly GUI
-Tab2:AddButton({
-    Name = "Ativar Fly GUI",
-    Description = "Carrega um GUI de fly universal",
-    Callback = function()
-        local success, _ = pcall(function()
-            loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Fly-gui-v3-30439"))()
-        end)
-
-        game.StarterGui:SetCore("SendNotification", {
-            Title = success and "Sucesso" or "Erro",
-            Text = success and "Fly GUI carregado!" or "Falha ao carregar o Fly GUI.",
-            Duration = 5
-        })
-    end
-})
 
 local Section = Tab2:AddSection({"ESP"})
 
