@@ -20,9 +20,9 @@ Tab1:AddDiscordInvite({
     Invite = "Link discord invite",
 })
 
-local Tab2= Window:MakeTab({"Fun", "fun"})
+local Tab2= Window:MakeTab({"Funções", "fun"})
 
-local Section = Tab2:AddSection({"Player Character"})
+local Section = Tab2:AddSection({"Personagem do Jogador"})
 
 
 local Players = game:GetService("Players")
@@ -584,7 +584,7 @@ local Tab3 = Window:MakeTab({"Avatar", "shirt"})
                                                          -- Tab3:  Avatar Editor--
 ----------------------------------------------------------------------------------------------------------------------------------
 
-local Section = Tab3:AddSection({"Copy Avatar"})
+local Section = Tab3:AddSection({"Copiar Avatar"})
 
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
@@ -630,7 +630,7 @@ Players.PlayerAdded:Connect(UptadePlayers)
 Players.PlayerRemoving:Connect(UptadePlayers)
 
 Tab3:AddButton({
-    Name = "Copia de Avatar",
+    Name = "Copiar Avatar",
     Callback = function()
         if not Target then return end
 
@@ -743,7 +743,7 @@ Tab3:AddButton({
     end
 })
 
-local Tab4 = Window:MakeTab({"House", "Home"})
+local Tab4 = Window:MakeTab({"Casa", "Home"})
 
 ---------------------------------------------------------------------------------------------------------------------------------
                                           -- === Tab4: House === --
@@ -806,7 +806,7 @@ Tab4:AddButton({
     end
 })
 
-local Tab5 = Window:MakeTab({"Car", "Car"})
+local Tab5 = Window:MakeTab({"Carro", "Car"})
 
 local Section = Tab5:AddSection({"Todas as funções do carro"})
 
@@ -944,11 +944,7 @@ function TeleportCarro:AtualizarListaCarros()
     return listaCarros
 end
 
--- Parágrafo
-Tab5:AddParagraph({
-    Title = "Use o void protection",
-    Content = ""
-})
+local Section = Tab5:AddSection({"Use o Void protection"})
 
 -- Toggle para matar todos os carros
 Tab5:AddToggle({
@@ -1082,7 +1078,7 @@ TeleportCarro.Workspace:WaitForChild("Vehicles").ChildRemoved:Connect(function()
     Dropdown:Set(TeleportCarro:AtualizarListaCarros())
 end)
 
-local Section = Tab5:AddSection({"functions kill e trazer"})
+local Section = Tab5:AddSection({"Funções kill e trazer"})
 
 -- Botão para destruir carro selecionado
 Tab5:AddButton({
@@ -2897,7 +2893,7 @@ flingToggle = Tab9:AddToggle({
     end
 })
 
-local Section = Tab9:AddSection({" fling ALL e desligue os RGB antes de usar"})
+local Section = Tab9:AddSection({" Fling all e desligue os RGB antes de usar"})
 
 -- Variáveis globais no início do Tab2
 local Players = game:GetService("Players")
@@ -3341,6 +3337,6 @@ local Window = WindUI:CreateWindow({
 
 local Tab = Window:Tab({
     Title = "Comandos",
-    Icon = "bird", -- optional
+    Icon = "rbxassetid://104373920477794", -- optional
     Locked = false,
 })
