@@ -3371,3 +3371,31 @@ local Tab = Window:Tab({
     Icon = "rbxassetid://78467548362841", -- optional
     Locked = false,
 })
+
+local Dropdown = Tab:Dropdown({
+    Title = "Dropdown",
+    Desc = "Dropdown Description",
+    Values = { "Category A", "Category B", "Category C" },
+    Value = "Category A",
+    Callback = function(option) 
+        print("Category selected: " .. option) 
+    end
+})
+
+local Button = Tab:Button({
+    Title = "Verifique",
+    Desc = "Test Button",
+    Locked = false,
+    Callback = function()
+        -- ...
+    end
+})
+
+local Button = Tab:Button({
+    Title = "Kick",
+    Desc = "Test Button",
+    Locked = false,
+    Callback = function()
+        -- ...
+    end
+})
