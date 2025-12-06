@@ -2956,9 +2956,9 @@ end
 
 -- TextBox para excluir jogador
 Tab9:AddTextBox({
-    Name = "adicionar jogador na whaitelist",
+    Name = "adicionar jogador na whitelist",
     Description = "Digite parte do nome do jogador",
-    PlaceholderText = "Ex.: rt para (player123)",
+    PlaceholderText = "Theus999",
     Callback = function(Value)
         if Value == "" then
             showNotification("Nenhuma Ação", "Digite um nome para adicionar um jogador.", nil)
@@ -2970,7 +2970,7 @@ Tab9:AddTextBox({
             -- Verifica se o jogador já está excluído
             for _, excluded in ipairs(excludedPlayers) do
                 if excluded == player then
-                    showNotification("Jogador Já esta na whaitelist", "Jogador " .. player.Name .. " já foi adicionado.", getPlayerThumbnail(player.UserId))
+                    showNotification("Jogador Já esta na whitelist", "Jogador " .. player.Name .. " já foi adicionado.", getPlayerThumbnail(player.UserId))
                     return
                 end
             end
@@ -2986,7 +2986,7 @@ Tab9:AddTextBox({
 -- Botão para verificar jogadores excluídos
 Tab9:AddButton({"Verificar Excluídos", function()
     if #excludedPlayers == 0 then
-        showNotification("Nenhum na whaitelist", "Nenhum jogador está removido dos flings.", nil)
+        showNotification("Nenhum na whitelist", "Nenhum jogador está removido dos flings.", nil)
         return
     end
     for i, player in ipairs(excludedPlayers) do
@@ -2999,11 +2999,11 @@ end})
 -- Botão para remover todos os jogadores excluídos
 Tab9:AddButton({"Remover Excluídos", function()
     if #excludedPlayers == 0 then
-        showNotification("Nenhum removido", "Nenhum jogador para remover da whaitelist.", nil)
+        showNotification("Nenhum removido", "Nenhum jogador para remover da whitelist.", nil)
         return
     end
     excludedPlayers = {}
-    showNotification("whaitelists Removidas", "Todos os jogadores foram removidos da whaitelist.", nil)
+    showNotification("whaitelists Removidas", "Todos os jogadores foram removidos da whitelist.", nil)
 end})
 
 -- Bola Fling Orbitando
