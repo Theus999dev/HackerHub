@@ -3398,7 +3398,6 @@ WindUI:AddTheme({
     
 })
 
-
 local Window = WindUI:CreateWindow({
     Title = "Hacker Hub Admin",
     Icon = "door-open", -- lucide icon
@@ -3417,8 +3416,6 @@ local Window = WindUI:CreateWindow({
     HideSearchBar = true,
     ScrollBarEnabled = false,
 })
-
-
 
 local Tab = Window:Tab({
     Title = "Comandos",
