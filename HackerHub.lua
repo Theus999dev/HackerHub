@@ -3316,19 +3316,6 @@ WindUI:AddTheme({
     Icon = Color3.fromHex("#a1a1aa"),
 })
 
-Window:EditOpenButton({
-    Title = "Hacker Hub Admim",
-    Icon = "monitor",
-    CornerRadius = UDim.new(0,16),
-    StrokeThickness = 2,
-    Color = ColorSequence.new( -- gradient
-        Color3.fromHex("FF0F7B"), 
-        Color3.fromHex("F89B29")
-    ),
-    OnlyMobile = false,
-    Enabled = true,
-    Draggable = true,
-})
 
 local Window = WindUI:CreateWindow({
     Title = "Hacker Hub Admin",
@@ -3351,6 +3338,6 @@ local Window = WindUI:CreateWindow({
 
 local Tab = Window:Tab({
     Title = "Comandos",
-    Icon = "104373920477794", -- optional
+    Icon = "rbxassetid://78467548362841", -- optional
     Locked = false,
 })
