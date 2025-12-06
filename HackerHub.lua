@@ -3491,6 +3491,7 @@ Tab9:AddButton({"Parar Tudo", function()
     showNotification("Tudo Parado", "Todas as funções foram desativadas.", nil)
 end})
 
+
 local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
 
 WindUI:AddTheme({
